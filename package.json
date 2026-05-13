@@ -1,0 +1,21 @@
+{
+  "name": "mini-project-fwd-tailwind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adityadi195/Mini-Project-FWD-Tailwind.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Adityadi195/Mini-Project-FWD-Tailwind/issues"
+  },
+  "homepage": "https://github.com/Adityadi195/Mini-Project-FWD-Tailwind#readme"
+}
