@@ -1,4 +1,398 @@
-@import "tailwindcss";
-@tailwind base;
-@tailwind components;
+@import 'tailwindcss';
+
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Lexend', sans-serif;
+    background-color: #F7FAFC;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer components {
+
+  .hero-bg {
+  @apply relative w-full rounded-[8px] overflow-hidden flex flex-col justify-center;
+
+  max-width: 928px;
+  height: 512px;
+  padding: 16px;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    url('../src/assets/images/Img1.png');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+  @media (min-width: 768px) {
+    .hero-bg {
+      height: 480px;
+      min-height: 480px;
+      padding: 0;
+    }
+  }
+
+  .hero-text-container {
+    @apply flex flex-col gap-4 z-10;
+    width: 100%;
+    max-width: 896px;
+    margin: auto 0;
+
+  }
+
+  .hero-title-wrapper {
+    @apply flex flex-col items-center p-0 self-stretch flex-none order-0 grow-0;
+    width: 860px;
+    height: 60px;
+  }
+
+  .hero-title {
+    @apply font-black text-white text-center tracking-[0px];
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 48px;
+      line-height: 60px;
+    }
+  }
+
+  .hero-description-wrapper {
+    @apply flex flex-col items-center p-0 self-stretch flex-none order-1 grow-0;
+    width: 700px;
+    height: 40px;
+  }
+
+  .hero-description {
+    @apply w-full text-center text-white;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .hero-description {
+      font-size: 16px;
+    }
+  }
+
+  .hero-button {
+    @apply flex items-center justify-center rounded-[8px] bg-[#125CED] hover:opacity-90 transition-all;
+    width: 163px;
+    height: 48px;
+    margin: 24px auto 0;
+  }
+
+  .hero-button-text {
+    @apply flex flex-col items-center justify-center text-center text-[#F7FAFC] font-bold flex-none order-0 self-stretch grow-0;
+    width: 120px;
+    height: 45px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@layer utilities {
+  .horizontal-scroll-mobile {
+    @apply flex overflow-x-auto pb-4 gap-3;
+  }
+
+  .mobile-card {
+    @apply flex-shrink-0 w-80;
+  }
+
+  .mobile-frame {
+    @apply w-full max-w-full;
+  }
+}
+
+@media (max-width: 768px) {
+  .horizontal-scroll-mobile {
+    @apply flex overflow-x-auto pb-4 gap-3;
+  }
+
+  .mobile-card {
+    @apply flex-shrink-0 w-80;
+  }
+
+  .mobile-frame {
+    @apply w-full;
+  }
+
+  .hero-text-container {
+    @apply w-full max-w-2xl h-70 left-5 top-28;
+  }
+
+  .hero-title {
+    @apply text-5xl leading-tight;
+  }
+
+  .hero-description {
+    @apply text-base leading-6 mt-4;
+  }
+
+  .hero-button {
+    @apply w-40 h-12 left-60 top-80;
+  }
+
+  .hero-button-text {
+    @apply text-base leading-6;
+  }
+}
+
+/* ✅ BENAR — pakai pure CSS di dalam @media */
+@media (min-width: 768px) {
+  .horizontal-scroll-mobile {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+
+  .mobile-card {
+    flex: none;
+    width: 100%;
+    /* ← card mengisi kolom grid */
+  }
+
+
+  .mobile-frame {
+    @apply w-full max-w-4xl;
+  }
+
+  .hero-text-container {
+    width: calc(100% - 32px);
+    left: 16px;
+    top: 182px;
+  }
+
+  .hero-title {
+    @apply text-[40px] leading-[60px];
+  }
+
+  .hero-description {
+    @apply text-base leading-6;
+  }
+
+  .hero-button {
+    width: 163px;
+    left: 50%;
+    transform: translateX(0%);
+    top: 310px;
+  }
+
+  .hero-button-text {
+    @apply text-base leading-6;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply w-full max-w-3xl mx-auto px-3;
+  }
+}
+
+@layer components {
+  .navbar {
+    @apply box-border flex flex-row justify-between items-center px-4 md:px-6 py-3 w-full h-16 bg-slate-50 border-b border-gray-200 sticky top-0 z-50;
+  }
+
+  .navbar-brand {
+    @apply flex flex-row items-center gap-4 min-w-fit;
+  }
+
+  .navbar-logo-icon {
+    @apply w-4 h-4;
+  }
+
+  .navbar-logo-text {
+    @apply text-lg font-bold leading-6;
+  }
+
+  .navbar-menu {
+    @apply hidden md:flex flex-row items-center gap-9;
+  }
+
+  .navbar-link {
+    @apply text-sm font-medium leading-6 transition-colors;
+  }
+
+  .navbar-actions {
+    @apply flex flex-row justify-end items-center gap-4 flex-grow;
+  }
+
+  .navbar-signup-btn {
+    @apply flex flex-row justify-center items-center px-4 py-0 min-w-fit h-10 rounded-lg bg-[#125CED] text-white hover:bg-blue-700 transition-all;
+  }
+
+  .navbar-signup-text {
+    @apply text-sm font-bold leading-6 text-slate-50;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply font-black tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply font-normal;
+  }
+}
+
+@layer components {
+  .feature-card {
+    @apply box-border flex flex-col items-start p-4 gap-3 bg-slate-50 border border-gray-300 rounded-lg h-50;
+  }
+
+  .feature-icon {
+    @apply w-6 h-6 bg-contain bg-no-repeat bg-center;
+  }
+
+  .feature-title {
+    @apply text-base font-bold;
+  }
+
+  .feature-description {
+    @apply text-sm leading-6;
+  }
+}
+
+@layer components {
+  .course-card {
+    @apply flex flex-col gap-3;
+  }
+
+  .course-image {
+    @apply w-full h-44 rounded-lg bg-gray-300 bg-cover bg-center;
+  }
+
+  .course-title {
+    @apply text-base font-medium;
+  }
+
+  .course-description {
+    @apply text-sm;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2 rounded-lg text-sm font-bold text-slate-50 hover:opacity-90 transition-opacity;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 bg-gray-200 rounded-lg text-sm font-bold hover:bg-gray-300 transition-colors;
+  }
+
+  .btn-view-all {
+    @apply px-6 py-2 bg-gray-100 rounded-lg text-sm font-bold hover:bg-gray-200 transition-colors;
+  }
+}
+
+@layer components {
+  .footer {
+    @apply w-full border-t border-gray-200 bg-slate-50 mt-auto;
+  }
+
+  /* .footer-links {
+    @apply flex flex-row flex-wrap justify-center md:justify-between items-center gap-8 md:gap-2;
+  } */
+
+ .footer-links {
+  @apply flex flex-row items-center w-full;
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  justify-content: space-between;
+  gap: 24px;
+}
+@media (max-width: 768px) {
+  .footer-links {
+    @apply flex-row;
+    max-width: 600px;
+    justify-content: space-between;
+    gap: 12px;
+
+    width: 100%;
+  }
+
+  .footer-link {
+    @apply text-sm;
+  }
+}
+
+  .footer-link {
+    @apply text-sm md:text-base transition-colors gap-6;
+  }
+
+  .footer-copyright {
+    @apply text-center text-sm;
+  }
+}
+
+@layer utilities {
+  .text-truncate {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .transition-all {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .feature-icon {
+    @apply w-6 h-6 bg-contain bg-no-repeat bg-center;
+  }
+
+  .feature-icon-material {
+    background-image: url('../src/assets/icon/Vec1.png');
+  }
+
+  .feature-icon-quiz {
+    background-image: url('../src/assets/icon/Vec2.png');
+  }
+
+  .feature-icon-certificate {
+    background-image: url('../src/assets/icon/Vec3.png');
+  }
+}
