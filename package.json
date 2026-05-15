@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/Adityadi195/Mini-Project-FWD-Tailwind/issues"
   },
-  "homepage": "https://github.com/Adityadi195/Mini-Project-FWD-Tailwind#readme"
+  "homepage": "https://github.com/Adityadi195/Mini-Project-FWD-Tailwind#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^4.3.0"
+  }
 }
